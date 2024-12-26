@@ -5,6 +5,11 @@ from webdriver_manager.chrome import ChromeDriverManager
 import pywhatkit
 from selenium.webdriver.chrome.options import Options
 
+
+
+chrome_options = Options()
+chrome_options.add_argument('--headless')
+
 # Set up headless options
 options = Options()
 options.add_argument("--headless")
@@ -15,7 +20,7 @@ message = "DansDeals HURRY appeared: dansdeals.com"
 
 # Set up the ChromeDriver using webdriver_manager
 service = Service(ChromeDriverManager().install())
-driver = webdriver.Chrome(service=service)
+driver = webdriver.Chrome(service=service, options=chrome_options)
 
 # Open the website
 url = "https://www.dansdeals.com/"
