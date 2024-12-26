@@ -7,24 +7,16 @@ import pywhatkit
 phone_number = "+16143698703"
 message = "DansDeals HURRY appeared: dansdeals.com"
 
-# Set up the ChromeDriver using webdriver_manager
 service = Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service)
 
-# Open the website
 url = "https://www.dansdeals.com/"
 driver.get(url)
 
-# Search for the word "hurry" on the page
 try:
-    # Get the page source
-    page_content = driver.page_source.lower()  # Convert to lowercase for case-insensitive search
-    
-    # Check if the word "hurry" exists
+    page_content = driver.page_source.lower()
     if "hurry" in page_content:
-        # Sending the WhatsApp Message
         pywhatkit.sendwhatmsg_instantly(phone_number, message, 10, tab_close=True)
-        # Displaying a Success Message
         print("WhatsApp message sent!")
         print("The word 'hurry' was found on the page!")
     else:
@@ -32,5 +24,4 @@ try:
 except Exception as e:
     print(f"An error occurred: {e}")
 
-# Close the browser
 driver.quit()
